@@ -1,12 +1,13 @@
 "use client";
+// CharactersList.jsx
 import { useCharacters } from "@/context/characterContext";
 
 export default function CharactersList() {
-  const { characters } = useCharacters();
+  const { filteredCharacters } = useCharacters();
 
   return (
     <ul>
-      {characters?.map((character) => (
+      {filteredCharacters?.map((character) => (
         <li key={character.id}>
           <img src={character.image} alt={character.name} />
           <div>
@@ -18,4 +19,5 @@ export default function CharactersList() {
     </ul>
   );
 }
+
 

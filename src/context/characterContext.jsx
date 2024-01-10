@@ -1,13 +1,12 @@
-"use client";
-// characterContext.jsx
+"use client"
 import { createContext, useContext, useEffect, useState } from "react";
 
 const CharactersContext = createContext();
 
 export function CharacterProvider({ children }) {
   const [characters, setCharacters] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
   const [filteredCharacters, setFilteredCharacters] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     fetch('https://rickandmortyapi.com/api/character')
@@ -38,7 +37,7 @@ export function CharacterProvider({ children }) {
   };
 
   return (
-    <CharactersContext.Provider value={{ characters: filteredCharacters, handleSearch }}>
+    <CharactersContext.Provider value={{ characters, filteredCharacters, handleSearch }}>
       {children}
     </CharactersContext.Provider>
   );
@@ -47,4 +46,3 @@ export function CharacterProvider({ children }) {
 export function useCharacters() {
   return useContext(CharactersContext);
 }
-
